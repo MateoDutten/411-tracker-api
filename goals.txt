@@ -1,0 +1,8 @@
+value1,value2,value3
+value1,value2,value3
+Carlos,10005 days,2024-01-10
+,,2024-02-07
+hfghbdgfih,fdgkljdf,2024-02-07
+hfghbdgfih,fdgkljdf,2024-02-07
+,,2024-02-07
+,,
