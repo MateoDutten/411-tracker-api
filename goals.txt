@@ -1,8 +1,4 @@
-value1,value2,value3
-value1,value2,value3
-Carlos,10005 days,2024-01-10
-,,2024-02-07
-hfghbdgfih,fdgkljdf,2024-02-07
-hfghbdgfih,fdgkljdf,2024-02-07
-,,2024-02-07
-,,
+go to the gym,week,2024-05-10
+go to the hotovo,week,2024-05-10
+go to the mekanik,month,2024-03-10
+go to the bober kurwa,year,2024-01-01
