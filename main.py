@@ -23,7 +23,6 @@ def goal(timeframe: hug.types.text):
         file_content = file_content.replace("\n", ",")
         file_content = file_content[:-1]
         file_content = file_content.split(",")
-        print(file_content)
         json = []
         for i in range(0, len(file_content), 3):
             if file_content[i+1] == timeframe:
