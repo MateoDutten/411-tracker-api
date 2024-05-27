@@ -25,7 +25,6 @@ def goal(timeframe: hug.types.text):
         file_content = file_content.split(",")
         print(file_content)
         json = []
-        print(timeframe)
         for i in range(0, len(file_content), 3):
             if file_content[i+1] == timeframe:
                 json.append({"goal": file_content[i], "timeframe": file_content[i+1], "date": file_content[i+2]})
