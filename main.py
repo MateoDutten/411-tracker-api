@@ -8,13 +8,6 @@ def process_data(request, response, resource):
     response.set_header('Access-Control-Allow-Headers', 'Content-Type')
 
 
-@hug.response_middleware()
-def process_data(request, response, resource):
-    response.set_header('Access-Control-Allow-Origin', '*')
-    response.set_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-    response.set_header('Access-Control-Allow-Headers', 'Content-Type')
-
-
 @hug.post()
 def goal(goal: hug.types.text, timeframe: hug.types.text, date: hug.types.text):
     with open('goals.txt', 'a') as file:
