@@ -17,10 +17,10 @@ def connect_to_db():
     return Session(conn)
 
 @hug.post()
-def goal(name: hug.types.text, timeframe: hug.types.text):
+def goal(name: hug.types.text, timeframe: hug.types.text, start_date: hug.types.text):
     session = connect_to_db()
 
-    goal = Goals(name=name, timeframe=date.fromisoformat(timeframe))
+    goal = Goals(name=name, timeframe=timeframe, start_date=date.fromisoformat(start_date))
     session.add(goal)
     session.flush()
     session.commit()
@@ -30,14 +30,6 @@ def goal(name: hug.types.text, timeframe: hug.types.text):
 
 @hug.get()
 def goal(timeframe: hug.types.text):
-    with open('goals.txt', 'r') as file:
-        file_content = file.read()
-        # convert to json from csv
-        file_content = file_content.replace("\n", ",")
-        file_content = file_content[:-1]
-        file_content = file_content.split(",")
-        json = []
-        for i in range(0, len(file_content), 3):
-            if file_content[i + 1] == timeframe:
-                json.append({"goal": file_content[i], "timeframe": file_content[i + 1], "date": file_content[i + 2]})
-        return json
+    session = connect_to_db()
+    goals = session.query(Goals).filter(Goals.timeframe == timeframe).all()
+    return [{'date': goal.start_date, 'goal': goal.name, 'timeframe': goal.timeframe} for goal in goals]
