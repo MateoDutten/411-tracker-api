@@ -9,4 +9,5 @@ class Goals(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(255))
-    timeframe: Mapped[DateTime] = mapped_column(DateTime())
+    timeframe: Mapped[str] = mapped_column(String(255))
+    start_date: Mapped[DateTime] = mapped_column(DateTime())
