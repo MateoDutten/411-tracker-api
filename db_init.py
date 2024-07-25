@@ -10,7 +10,7 @@ goals = db.Table(
     db.Column('id', db.Integer(), primary_key=True),
     db.Column('name', db.String(255), nullable=False),
     db.Column('timeframe', db.Text(), nullable=False),
-    db.Column('start_date', db.Text(), nullable=False)
+    db.Column('start_date', db.DateTime(), nullable=False)
 )
 
 metadata.create_all(engine)
