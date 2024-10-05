@@ -19,13 +19,23 @@ def connect_to_db():
 @hug.post()
 def goal(name: hug.types.text, timeframe: hug.types.text, start_date: hug.types.text):
     session = connect_to_db()
-
     goal = Goals(name=name, timeframe=timeframe, start_date=date.fromisoformat(start_date))
     session.add(goal)
     session.flush()
     session.commit()
 
     return "Goal created"
+
+@hug.delete()
+def goal(name: hug.types.text, start_date:hug.types.text):
+    session = connect_to_db()
+    goal = Goals(name=name, start_date=start_date)
+    session.delete(goal)
+    session.flush()
+    session.commit()
+    return "Goal deleted"
+
+
 
 
 @hug.get()
