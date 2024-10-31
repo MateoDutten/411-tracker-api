@@ -33,7 +33,7 @@ def goal(goal_id: hug.types.text):
     session = connect_to_db()
     goal_ = session.get(Goals, goal_id)
     session.delete(goal_)
-    session.flush()
+    session.commit()
     return "Goal Deleted"
 
 
