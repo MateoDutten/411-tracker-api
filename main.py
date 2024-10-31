@@ -3,7 +3,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from models.goals import Goals
 from datetime import date
-from sqlalchemy import delete
+from sqlalchemy import select
+
 
 @hug.response_middleware()
 def process_data(request, response, resource):
@@ -30,8 +31,9 @@ def goal(name: hug.types.text, timeframe: hug.types.text, start_date: hug.types.
 @hug.delete()
 def goal(goal_id: hug.types.text):
     session = connect_to_db()
-    goal = (delete(Goals).where(Goals.id == goal_id))
-    session.execute(goal)
+    goal_ = session.get(Goals, goal_id)
+    session.delete(goal_)
+    session.flush()
     return "Goal Deleted"
 
 
